@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.si.clinicamedica.model.TiposConsultas;
 import br.com.si.clinicamedica.service.TiposConsultasService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "API REST Tipos de Consultas")
 @Controller
 @RequestMapping("/tiposconsultas")
 public class TiposConsultasController {
@@ -24,27 +27,32 @@ public class TiposConsultasController {
 	@Autowired
 	TiposConsultasService service;
 	
+	@ApiOperation(value = "Criar tipos de consultas")
 	@PostMapping()
 	public ResponseEntity<TiposConsultas> create(@RequestBody TiposConsultas tiposConsultas)
 	{	
 		return new ResponseEntity<TiposConsultas>(service.create(tiposConsultas),HttpStatus.CREATED);
 	}
 	
+	@ApiOperation(value = "Retorna todos os tipos de consulta existentes no banco")
 	@GetMapping()
 	public ResponseEntity<List<TiposConsultas>> readAll()
 	{	return new ResponseEntity<List<TiposConsultas>>(service.readAll(),HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "Retorna o tipo de consulta por ID")
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<TiposConsultas> readById(@PathVariable Integer id)
 	{	return new ResponseEntity<TiposConsultas>(service.readById(id),HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "Atualiza o tipo de consulta existente")
 	@PutMapping
 	public ResponseEntity<TiposConsultas> update(@RequestBody TiposConsultas tiposConsultas)
 	{	return new ResponseEntity<TiposConsultas>(service.update(tiposConsultas),HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "Deleta o tipo da consulta por ID")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<TiposConsultas> delete(@PathVariable Integer id)
 	{	service.delete(id);
