@@ -1,29 +1,14 @@
-package br.com.si.clinicamedica.model;
+package br.com.si.clinicamedica.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+public class InfoCliente {
 
-@Entity
-public class LoginCliente {
-
-	@Column
 	private String nome;
 
-	@Id
-	private String cpf;
-
-	@Column
 	private String sexo;
 
-	@Column
 	private String telefone;
 
-	@Column(unique = true)
 	private String email;
-
-	@Column
-	private String senha;
 
 	public String getNome() {
 		return nome;
@@ -31,14 +16,6 @@ public class LoginCliente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public String getSexo() {
@@ -65,22 +42,12 @@ public class LoginCliente {
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
@@ -94,12 +61,7 @@ public class LoginCliente {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LoginCliente other = (LoginCliente) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
-				return false;
-		} else if (!cpf.equals(other.cpf))
-			return false;
+		InfoCliente other = (InfoCliente) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -109,11 +71,6 @@ public class LoginCliente {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
-			return false;
-		if (senha == null) {
-			if (other.senha != null)
-				return false;
-		} else if (!senha.equals(other.senha))
 			return false;
 		if (sexo == null) {
 			if (other.sexo != null)

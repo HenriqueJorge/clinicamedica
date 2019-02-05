@@ -10,28 +10,27 @@ import br.com.si.clinicamedica.repository.LoginClienteRepository;
 
 @Service
 public class LoginClienteService {
-	
+
 	@Autowired
 	private LoginClienteRepository loginClienteRepository;
-	
-	
+
 	public void createLogin(LoginCliente login) {
 		loginClienteRepository.save(login);
 	}
-	
-	public LoginCliente readLogin(int id) {
+
+	public LoginCliente readLogin(String id) {
 		return loginClienteRepository.findById(id).get();
 	}
-	
-	public List<LoginCliente> readAllLogin(){
+
+	public List<LoginCliente> readAllLogin() {
 		return loginClienteRepository.findAll();
 	}
-	
+
 	public void updateLogin(LoginCliente login) {
 		loginClienteRepository.save(login);
 	}
-	
-	public void deleteLogin(int id) {
+
+	public void deleteLogin(String id) {
 		loginClienteRepository.deleteById(id);
 	}
 

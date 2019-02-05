@@ -1,28 +1,30 @@
-package br.com.si.clinicamedica.model;
+package br.com.si.clinicamedica.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
-@Entity
-public class LoginCliente {
+public class LoginClienteV {
 
-	@Column
+	@NotEmpty(message = "Nome vazio")
 	private String nome;
 
-	@Id
+	@Size(min = 11, max = 11, message = "CPF invalido")
+	@NotEmpty(message = "CPF vazio")
 	private String cpf;
 
-	@Column
+	@NotEmpty(message = "Sexo vazio")
 	private String sexo;
 
-	@Column
+	@Size(min = 9, max = 9, message = "Telefone invalido")
+	@NotEmpty(message = "Telefone vazio")
 	private String telefone;
 
-	@Column(unique = true)
+	@NotEmpty(message = "Email vazio")
+	@Email(message = "Email invalido")
 	private String email;
 
-	@Column
+	@NotEmpty(message = "Senha vazia")
 	private String senha;
 
 	public String getNome() {
@@ -94,7 +96,7 @@ public class LoginCliente {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LoginCliente other = (LoginCliente) obj;
+		LoginClienteV other = (LoginClienteV) obj;
 		if (cpf == null) {
 			if (other.cpf != null)
 				return false;
