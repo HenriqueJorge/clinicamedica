@@ -15,36 +15,35 @@ public class RegistroConsulta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_regitroconsulta")
-	private Integer id;
-
-	/*@Column
-	@ManyToMany
-	@MapsId
-	private TiposConsultas tiposConsultas;
-	*/
-	@Column
+	private Integer idConsulta;
+	
+	@Column(name = "tipo_consulta")
+	private Integer tipoConsulta;
+	
+	@Column(name = "horario_consulta")
 	private Date horarioConsulta;
 	
-	@Column
-	private Date diaConsulta;
+	@Column(name = "data_consulta")
+	private Date dataConsulta;
 
-	
-	
-	public Integer getId() {
-		return id;
+	@Column(name = "id_paciente")
+	private Integer idPaciente;
+
+	public Integer getIdConsulta() {
+		return idConsulta;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdConsulta(Integer idConsulta) {
+		this.idConsulta = idConsulta;
 	}
 
-	/*public TiposConsultas getTiposConsultas() {
-		return tiposConsultas;
+	public Integer getTipoConsulta() {
+		return tipoConsulta;
 	}
 
-	public void setTiposConsultas(TiposConsultas tiposConsultas) {
-		this.tiposConsultas = tiposConsultas;
-	}*/
+	public void setTipoConsulta(Integer tipoConsulta) {
+		this.tipoConsulta = tipoConsulta;
+	}
 
 	public Date getHorarioConsulta() {
 		return horarioConsulta;
@@ -54,11 +53,29 @@ public class RegistroConsulta {
 		this.horarioConsulta = horarioConsulta;
 	}
 
-	public Date getDiaConsulta() {
-		return diaConsulta;
+	public Date getDataConsulta() {
+		return dataConsulta;
 	}
 
-	public void setDiaConsulta(Date diaConsulta) {
-		this.diaConsulta = diaConsulta;
+	public void setDataConsulta(Date dataConsulta) {
+		this.dataConsulta = dataConsulta;
 	}
+
+	public Integer getIdPaciente() {
+		return idPaciente;
+	}
+
+	public void setIdPaciente(Integer idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+	
+
+	/*public TiposConsultas getTiposConsultas() {
+		return tiposConsultas;
+	}
+
+	public void setTiposConsultas(TiposConsultas tiposConsultas) {
+		this.tiposConsultas = tiposConsultas;
+	}*/
+
 }

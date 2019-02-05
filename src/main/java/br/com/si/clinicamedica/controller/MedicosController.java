@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.si.clinicamedica.dto.CadastrarMedico;
 import br.com.si.clinicamedica.model.Medicos;
 import br.com.si.clinicamedica.service.MedicosService;
 import io.swagger.annotations.Api;
@@ -29,9 +30,14 @@ public class MedicosController {
 	
 	@ApiOperation(value = "Criar Medicos")
 	@PostMapping()
-	public ResponseEntity<Medicos> create(@RequestBody Medicos medicos)
-	{	
-		return new ResponseEntity<Medicos>(service.create(medicos),HttpStatus.CREATED);
+	public ResponseEntity<CadastrarMedico> create(@RequestBody CadastrarMedico medicos)
+	{	Medicos c = new Medicos();
+		c.setCrm(medicos.getCrm());
+		c.setEspecialidade(medicos.getEspecialidade());
+		c.setFormacaoAcademica(medicos.getFormacaoAcademica());
+		c.setNome(medicos.getNome());
+		service.create(c);
+		return new ResponseEntity<CadastrarMedico>(HttpStatus.CREATED);
 	}
 	
 	@ApiOperation(value = "Retorna todos os Medicos existentes no banco")

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.si.clinicamedica.dto.NovoTipo;
 import br.com.si.clinicamedica.model.TiposExames;
 import br.com.si.clinicamedica.service.TiposExamesService;
 import io.swagger.annotations.Api;
@@ -29,9 +30,13 @@ public class TiposExamesController {
 	
 	@ApiOperation(value = "Criar tipos de exames")
 	@PostMapping()
-	public ResponseEntity<TiposExames> create(@RequestBody TiposExames tiposExames)
+	public ResponseEntity<NovoTipo> create(@RequestBody NovoTipo tiposExames)
 	{	
-		return new ResponseEntity<TiposExames>(service.create(tiposExames),HttpStatus.CREATED);
+		TiposExames c = new TiposExames();
+		c.setDescricao(tiposExames.getDescricao());
+		c.setTitulo(tiposExames.getTitulo());
+		service.create(c);
+		return new ResponseEntity<NovoTipo>(HttpStatus.CREATED);
 	}
 	
 	@ApiOperation(value = "Retorna todos os tipos de exames existentes no banco")

@@ -13,8 +13,11 @@ public class TiposConsultas {
 	@Column(name = "id_tiposConsultas")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
+	@Column(name = "titulo", nullable = false, unique = true)
+	private String titulo;
 
-	@Column(name = "descrição", nullable = false, unique = true)
+	@Column(name = "descrição", nullable = false)
 	private String descrição;
 	/*
 	 * @Column(name = "horario_inicial", nullable = false) private Date
@@ -23,8 +26,19 @@ public class TiposConsultas {
 	 * @Column(name = "horario_final", nullable = false) private Date horarioFinal;
 	 */
 
+	
+	
+	
 	public Integer getId() {
 		return id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public void setId(Integer id) {
@@ -45,6 +59,7 @@ public class TiposConsultas {
 		int result = 1;
 		result = prime * result + ((descrição == null) ? 0 : descrição.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
 
@@ -66,6 +81,11 @@ public class TiposConsultas {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
 			return false;
 		return true;
 	}

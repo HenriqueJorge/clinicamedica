@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.si.clinicamedica.dto.CadastrarConsulta;
 import br.com.si.clinicamedica.model.RegistroConsulta;
 
 import br.com.si.clinicamedica.service.RegistroConsultasService;
@@ -30,9 +31,14 @@ public class RegistroConsultaController {
 	
 	@ApiOperation(value = "Registrar consultas")
 	@PostMapping()
-	public ResponseEntity<RegistroConsulta> create(@RequestBody RegistroConsulta registroConsulta)
-	{	
-		return new ResponseEntity<RegistroConsulta>(service.create(registroConsulta),HttpStatus.CREATED);
+	public ResponseEntity<CadastrarConsulta> create(@RequestBody CadastrarConsulta registroConsulta)
+	{	RegistroConsulta c = new RegistroConsulta();
+		c.setDataConsulta(registroConsulta.getDiaConsulta());
+		c.setHorarioConsulta(registroConsulta.getHorarioConsulta());
+		c.setIdPaciente(registroConsulta.getIdPaciente());
+		c.setTipoConsulta(registroConsulta.getConsulta());
+		service.create(c);
+		return new ResponseEntity<CadastrarConsulta>(HttpStatus.CREATED);
 	}
 	
 	@ApiOperation(value = "Retorna todos os registros de consulta existentes no banco")

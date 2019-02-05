@@ -35,6 +35,7 @@ public class TiposConsultasController {
 	public ResponseEntity<NovoTipo> create(@RequestBody @Valid NovoTipo tiposConsultas) {
 		TiposConsultas c = new TiposConsultas();
 		c.setDescrição(tiposConsultas.getDescricao());
+		c.setTitulo(tiposConsultas.getTitulo());
 		service.create(c);
 		return new ResponseEntity<NovoTipo>(HttpStatus.CREATED);
 	}

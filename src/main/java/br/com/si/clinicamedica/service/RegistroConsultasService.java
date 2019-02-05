@@ -31,7 +31,7 @@ public class RegistroConsultasService {
 	}
 	
 	public RegistroConsulta update(RegistroConsulta registroConsulta) 
-	{	if(repository.existsById(registroConsulta.getId())) 
+	{	if(repository.existsById(registroConsulta.getIdConsulta())) 
 		{	return repository.save(registroConsulta);
 		}
 		return null;
