@@ -17,7 +17,7 @@ public class TiposConsultas {
 	@Column(name = "titulo", nullable = false, unique = true)
 	private String titulo;
 
-	@Column(name = "descrição", nullable = false)
+	@Column(name = "descricao", nullable = false)
 	private String descricao;
 	/*
 	 * @Column(name = "horario_inicial", nullable = false) private Date
