@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ public class MedicosController {
 	MedicosService service;
 	
 	@ApiOperation(value = "Criar Medicos")
+	@CrossOrigin
 	@PostMapping()
 	public ResponseEntity<CadastrarMedico> create(@RequestBody CadastrarMedico medicos)
 	{	Medicos c = new Medicos();
@@ -41,24 +43,28 @@ public class MedicosController {
 	}
 	
 	@ApiOperation(value = "Retorna todos os Medicos existentes no banco")
+	@CrossOrigin
 	@GetMapping()
 	public ResponseEntity<List<Medicos>> readAll()
 	{	return new ResponseEntity<List<Medicos>>(service.readAll(),HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "Retorna o Medico por ID")
+	@CrossOrigin
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<Medicos> readById(@PathVariable Integer id)
 	{	return new ResponseEntity<Medicos>(service.readById(id),HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "Atualiza o Medico existente")
+	@CrossOrigin
 	@PutMapping
 	public ResponseEntity<Medicos> update(@RequestBody Medicos medicos)
 	{	return new ResponseEntity<Medicos>(service.update(medicos),HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "Deleta o Medico por ID")
+	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Medicos> delete(@PathVariable Integer id)
 	{	service.delete(id);

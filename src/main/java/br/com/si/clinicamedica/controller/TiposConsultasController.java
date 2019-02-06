@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ public class TiposConsultasController {
 	TiposConsultasService service;
 
 	@ApiOperation(value = "Cria um novo tipo de consulta")
+	@CrossOrigin
 	@PostMapping()
 	public ResponseEntity<NovoTipo> create(@RequestBody @Valid NovoTipo tiposConsultas) {
 		TiposConsultas c = new TiposConsultas();
@@ -41,24 +43,28 @@ public class TiposConsultasController {
 	}
 
 	@ApiOperation(value = "Retorna todos os tipos de consultas")
+	@CrossOrigin
 	@GetMapping()
 	public ResponseEntity<List<TiposConsultas>> readAll() {
 		return new ResponseEntity<List<TiposConsultas>>(service.readAll(), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Retorna uma consulta")
+	@CrossOrigin
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<TiposConsultas> readById(@PathVariable Integer id) {
 		return new ResponseEntity<TiposConsultas>(service.readById(id), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Atualiza um tipo de consulta")
+	@CrossOrigin
 	@PutMapping
 	public ResponseEntity<TiposConsultas> update(@RequestBody TiposConsultas tiposConsultas) {
 		return new ResponseEntity<TiposConsultas>(service.update(tiposConsultas), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Deleta um tipo de consulta")
+	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public ResponseEntity<TiposConsultas> delete(@PathVariable Integer id) {
 		service.delete(id);

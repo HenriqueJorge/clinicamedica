@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ public class RegistroExameController {
 	private RegistroExameService registroExameService;
 
 	@ApiOperation(value = "Registra um exame")
+	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<CadastrarExame> createRegistroExame(@RequestBody @Valid CadastrarExame eRegistro) {
 		RegistroExame e = new RegistroExame();
@@ -43,18 +45,21 @@ public class RegistroExameController {
 	}
 
 	@ApiOperation(value = "Retorna um registro de exame")
+	@CrossOrigin
 	@GetMapping("/{id}")
 	public ResponseEntity<RegistroExame> readRegistroExame(@PathVariable(name = "id") int id) {
 		return new ResponseEntity<RegistroExame>(registroExameService.readRegistroExame(id), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Retorna todos os registro de exames")
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<RegistroExame>> readAllRegistroExame() {
 		return new ResponseEntity<List<RegistroExame>>(registroExameService.readAllExame(), HttpStatus.OK);
 	}
 
 	@ApiOperation(value = "Atualiza um regitro")
+	@CrossOrigin
 	@PutMapping
 	public ResponseEntity<RegistroExame> updateRegistroExame(@RequestBody RegistroExame eRegistro) {
 		registroExameService.updateRegistroExame(eRegistro);
@@ -62,6 +67,7 @@ public class RegistroExameController {
 	}
 
 	@ApiOperation(value = "Delete um registro de exameq")
+	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public ResponseEntity<RegistroExame> deleteRegistroExame(@PathVariable(name = "id") int id) {
 		registroExameService.deleteRegistroExame(id);

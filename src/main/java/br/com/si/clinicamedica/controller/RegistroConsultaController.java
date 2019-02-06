@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class RegistroConsultaController {
 	RegistroConsultasService service;
 	
 	@ApiOperation(value = "Registrar consultas")
+	@CrossOrigin
 	@PostMapping()
 	public ResponseEntity<CadastrarConsulta> create(@RequestBody CadastrarConsulta registroConsulta)
 	{	RegistroConsulta c = new RegistroConsulta();
@@ -42,24 +44,28 @@ public class RegistroConsultaController {
 	}
 	
 	@ApiOperation(value = "Retorna todos os registros de consulta existentes no banco")
+	@CrossOrigin
 	@GetMapping()
 	public ResponseEntity<List<RegistroConsulta>> readAll()
 	{	return new ResponseEntity<List<RegistroConsulta>>(service.readAll(),HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "Retorna o registro de consulta por ID")
+	@CrossOrigin
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<RegistroConsulta> readById(@PathVariable Integer id)
 	{	return new ResponseEntity<RegistroConsulta>(service.readById(id),HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "Atualiza o registro de consulta existente")
+	@CrossOrigin
 	@PutMapping
 	public ResponseEntity<RegistroConsulta> update(@RequestBody RegistroConsulta registroConsulta)
 	{	return new ResponseEntity<RegistroConsulta>(service.update(registroConsulta),HttpStatus.OK);
 	}
 	
 	@ApiOperation(value = "Deleta o registro de consulta por ID")
+	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public ResponseEntity<RegistroConsulta> delete(@PathVariable Integer id)
 	{	service.delete(id);
