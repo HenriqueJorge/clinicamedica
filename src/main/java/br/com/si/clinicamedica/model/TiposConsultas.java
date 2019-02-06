@@ -18,7 +18,7 @@ public class TiposConsultas {
 	private String titulo;
 
 	@Column(name = "descrição", nullable = false)
-	private String descrição;
+	private String descricao;
 	/*
 	 * @Column(name = "horario_inicial", nullable = false) private Date
 	 * horarioInicial;
@@ -46,18 +46,18 @@ public class TiposConsultas {
 	}
 
 	public String getDescrição() {
-		return descrição;
+		return descricao;
 	}
 
 	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+		this.descricao = descrição;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((descrição == null) ? 0 : descrição.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
@@ -72,10 +72,10 @@ public class TiposConsultas {
 		if (getClass() != obj.getClass())
 			return false;
 		TiposConsultas other = (TiposConsultas) obj;
-		if (descrição == null) {
-			if (other.descrição != null)
+		if (descricao == null) {
+			if (other.descricao != null)
 				return false;
-		} else if (!descrição.equals(other.descrição))
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		if (id == null) {
 			if (other.id != null)
